@@ -12,7 +12,6 @@
 #define UNUSED(x) (void)(x)
 #define STACK 0
 #define QUEUE 1
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -61,7 +60,6 @@ typedef struct bus_s
 } bus_t;
 
 extern bus_t bus;
-
 
 /******* FUNCTIONS *******/
 int execute(char *line, stack_t **stack, unsigned int line_number);
