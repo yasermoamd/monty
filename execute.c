@@ -1,46 +1,32 @@
 #include "monty.h"
-
 /**
- * execute - executes the command at a given line of a file.
- * @line: the command to execute
- * @stack: stack head
- * @count: line_number
- * Return: nothing
+ * main - Function that reads the file and executes the functions
+ * @argc: Numbers of elements
+ * @argv: Elements
+ * Return: 0 if succes
  */
-
-int execute(char *line, stack_t **stack, unsigned int count)
+int main(int argc, char *argv[])
 {
-	/*char *command, *arg;*/
-	instruction_t func[] = {
-		{"push", push}, {"pall", pall},
-		{"pint", pint},
+	FILE *file;
+
+	instruction_t op[] = {
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
+		{NULL, NULL}
 	};
-	char *command = strtok(line, " \n\t");
-	char *arg;
-	int i = 0;
-
-	if (command && command[0] == '#')
-		return (0);
-	arg = strtok(NULL, " \n\t");
-	bus.arg = arg;
-	while (func[i].opcode && command)
+	if (argc != 2)
 	{
-		if (strcmp(func[i].opcode, command) == 0)
-		{
-			func[i].f(stack, count);
-			return (0);
-		}
-		i++;
-	}
-
-	if (command && func[i].opcode == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", count, command);
-		free_stack(*stack);
-		fclose(bus.file);
-		free(bus.line);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	return (1);
+	file = fopen(argv[1], "r");
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	get_op(file, op);
+	fclose(file);
+	return (0);
 }
-
