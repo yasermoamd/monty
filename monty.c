@@ -1,5 +1,6 @@
 #define _GNU_SOURCE
 #include "monty.h"
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - entry point
@@ -16,7 +17,6 @@ int main(int argc, char const *argv[])
 	unsigned int counter = 0;
 	ssize_t read = 1;
 	stack_t *stack = NULL;
-	bus_t bus = {NULL, NULL, NULL, 0};
 
 	if (argc != 2)
 	{
@@ -46,6 +46,5 @@ int main(int argc, char const *argv[])
 	free_stack(stack);
 	fclose(bus.file);
 	return (0);
-
 }
 

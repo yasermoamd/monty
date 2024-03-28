@@ -13,14 +13,7 @@ int execute(char *line, stack_t **stack, unsigned int count)
 	/*char *command, *arg;*/
 	instruction_t func[] = {
 		{"push", push}, {"pall", pall},
-		{"pint", pint}, {"pop", pop},
-		{"swap", swap}, {"add", add},
-		{"sub", sub}, {"div", _div},
-		{"mul", mul}, {"mod", mod},
-		{"nop", nop}, {"pchar",  pchar},
-		{"pstr", pstr}, {"stack", _stack},
-		{"queue", queue}, {"rotl", rotl},
-		{"rotr", rotr}, {NULL, NULL},
+		{"pint", pint}, {NULL, NULL},
 	};
 	char *command = strtok(line, " \n\t");
 	char *arg;

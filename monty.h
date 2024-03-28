@@ -62,7 +62,7 @@ typedef struct bus_s
 extern bus_t bus;
 
 /******* FUNCTIONS *******/
-int execute(char *line, stack_t **stack, unsigned int line_number);
+int execute(char *line, stack_t **stack, unsigned int count);
 void add_node(stack_t **head, int n);
 void add_node_end(stack_t **stack, int n);
 void cleanup_and_exit(void);
